@@ -42,7 +42,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Common form foundation classes
  Both reactive and template-driven forms are built on the following base classes.
-* **FormControl** tracks the value and validation status of an individual form control.
-* **FormGroup** tracks the same values and status for a collection of form controls.
-* **FormArray** tracks the same values and status for an array of form controls.
-* **ControlValueAccessor** creates a bridge between Angular FormControl instances and native DOM elements.
+* FormControl tracks the value and validation status of an individual form control.
+* FormGroup tracks the same values and status for a collection of form controls.
+* FormArray tracks the same values and status for an array of form controls.
+* ControlValueAccessor creates a bridge between Angular FormControl instances and native DOM elements.
