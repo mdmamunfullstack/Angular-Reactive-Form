@@ -26,8 +26,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Advantage of Template-driven
+## Advantage of Template-driven Form
 * Easy to use
 * Similar to AngularJS
 * Two-way data binding -> Minimal component code
 * Automatically tracks form and input element state
+
+## Advantage of Reactive Form
+* More flexible ->more complex scenarios
+* Immutable data model
+* Easier to perform an action on a value change
+* Reactive transformations ->DebounceTimeor DistinctUntilChanged
+* Easily add input elements dynamically
+* Easier unit testing
