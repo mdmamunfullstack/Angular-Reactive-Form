@@ -1,0 +1,214 @@
+<div class="card">
+  <div class="card-header">
+    Product Info!
+  </div>
+
+  <div class="card-body">
+    <form novalidate
+          (ngSubmit)="save(signupForm)"
+          #signupForm="ngForm">
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="productName">Product Name</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="productName"
+                 type="text"
+                 placeholder="Product Name (required)"
+                 required
+                 minlength="3"
+                 [(ngModel)]=product.ProductName
+                 name="ProductName"
+                 #productNameVar="ngModel"
+                 [ngClass]="{'is-invalid': (productNameVar.touched || productNameVar.dirty) && !productNameVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="productNameVar.errors?.required">
+              Please enter your first name.
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="supplier">Supplier</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="supplier"
+                 type="text"
+                 placeholder="supplier (required)"
+                 required
+                 [(ngModel)]=product.Supplier
+                 name="Supplier"
+                 #supplierVar="ngModel"
+                 [ngClass]="{'is-invalid': (supplierVar.touched || supplierVar.dirty) && !supplierVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="supplierVar.errors?.required">
+              Please enter supplier.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="suppcategorylier">Supplier</label>
+        <div class="col-md-8">
+          <select class="form-control"
+                  id="category"
+                  [(ngModel)]="product.Category"
+                  name="Category">
+            <option value=""
+                    disabled
+                    selected
+                    hidden>Select a Category...</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Meat/Poultry">Meat/Poultry</option>
+            <option value="Grains/Cereals">Grains/Cereals</option>
+            <option value="Dairy Products">Dairy Products</option>
+            <option value="Confections">Confections</option>
+            <option value="Condiments">Condiments</option>
+            <option value="Beverages">Beverages</option>
+            <option value="WY">Wyoming</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="category">UnitPrice</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="unitPrice"
+                 type="number"
+                 placeholder="UnitPrice"
+                 required
+                 [(ngModel)]=product.UnitPrice
+                 name="UnitPrice"
+                 #unitPriceVar="ngModel"
+                 [ngClass]="{'is-invalid': (unitPriceVar.touched || unitPriceVar.dirty) && !unitPriceVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="unitPriceVar.errors?.required">
+              Please enter unit Price.
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="unitsInStock">Units In Stock</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="unitsInStock"
+                 type="number"
+                 placeholder="units In Stock"
+                 required
+                 [(ngModel)]=product.UnitsInStock
+                 name="UnitsInStock"
+                 #unitsInStockVar="ngModel"
+                 [ngClass]="{'is-invalid': (unitsInStockVar.touched || unitsInStockVar.dirty) && !unitsInStockVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="unitsInStockVar.errors?.required">
+              Please enter unit Price.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="unitsOnOrder">Units On Order</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="unitsOnOrder"
+                 type="number"
+                 placeholder="units On Order"
+                 required
+                 [(ngModel)]=product.UnitsOnOrder
+                 name="UnitsOnOrder"
+                 #unitsOnOrderVar="ngModel"
+                 [ngClass]="{'is-invalid': (unitsOnOrderVar.touched || unitsOnOrderVar.dirty) && !unitsOnOrderVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="unitsOnOrderVar.errors?.required">
+              Please enter unit on Order.
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="reorderLevel">Reorder Level</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="reorderLevel"
+                 type="number"
+                 placeholder="reorder Level"
+                 required
+                 [(ngModel)]=product.ReorderLevel
+                 name="ReorderLevel"
+                 #reorderLevelVar="ngModel"
+                 [ngClass]="{'is-invalid': (reorderLevelVar.touched || reorderLevelVar.dirty) && !reorderLevelVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="reorderLevelVar.errors?.required">
+              Please enter reorder level.
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label"
+               for="discontinued">Discontinued</label>
+        <div class="col-md-8">
+          <input class="form-control"
+                 id="discontinued"
+                 type="checkbox"
+                 placeholder="reorder Level"
+                 required
+                 [(ngModel)]=product.Discontinued
+                 name="Discontinued"
+                 #discontinuedVar="ngModel"
+                 [ngClass]="{'is-invalid': (discontinuedVar.touched || discontinuedVar.dirty) && !discontinuedVar.valid }" />
+          <span class="invalid-feedback">
+            <span *ngIf="discontinuedVar.errors?.required">
+              Please specify discontinued.
+            </span>
+          </span>
+        </div>
+      </div>
+
+
+
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:80px"
+                  [title]="signupForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!signupForm.valid">
+            Save
+          </button>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+    </form>
+  </div>
+</div>
+<br>Dirty: {{ signupForm.dirty }}
+<br>Touched: {{ signupForm.touched }}
+<br>Valid: {{ signupForm.valid }}
+<br>Value: {{ signupForm.value | json }}
