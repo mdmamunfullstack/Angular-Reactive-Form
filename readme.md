@@ -46,3 +46,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * **FormGroup tracks** the same values and status for a collection of form controls.
 * **FormArray tracks** the same values and status for an array of form controls.
 * **ControlValueAccessor** creates a bridge between Angular FormControl instances and native DOM elements.
+
+## Angular Form / Control State
+ * Value Changed
+  * pristine
+  * dirty
