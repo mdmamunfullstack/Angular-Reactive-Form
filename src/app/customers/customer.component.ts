@@ -108,7 +108,7 @@ export class CustomerComponent implements OnInit {
 
     
 
-    const emailControl = this.customerForm.get('emailGroup.email');
+    const emailControl = this.customerForm.get('emailGroup.email');```
     emailControl.valueChanges.pipe(
       debounceTime(1000)
     ).subscribe(
