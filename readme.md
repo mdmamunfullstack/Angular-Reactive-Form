@@ -49,5 +49,129 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Angular Form / Control State
  * Value Changed
-  * pristine
-  * dirty
+      * pristine
+      * dirty
+
+## Build In Validation Example
+```
+   this.customerForm = this.fb.group({
+      firstName:['',[Validators.required, Validators.minLength(3)]],
+      lastName :['',[Validators.required, Validators.maxLength(50)]],
+      email:['',[Validators.required, Validators.email]],
+      phone:'',
+      notification:'email',
+      sendCatalog : true
+    })
+```
+
+## Adjusting Validation At RunTime
+`setValidators` | `clearValidators` | `updateValueAndValidity`
+
+```
+  setNotification(notifyVia : string):void{
+    const phoneControl = this.customerForm.get('phone');
+    if (notifyVia ==='text') {
+       phoneControl.setValidators(Validators.required);
+    }
+    else{
+      phoneControl.clearValidators();
+    }
+    phoneControl.updateValueAndValidity();
+
+  }
+```
+
+## Custom Validation In Angular
+`AbstractControl`  | `Object`
+```
+function ratingRange(c:AbstractControl):{[key:string]:boolean}{
+
+  if (c.value !== null && (isNaN(c.value) || c.value<1 || c.value>5  )) {
+
+    return {'range':true}
+    
+  }
+
+  return null;
+
+}
+```
+
+## Custom Validation With Parameter
+```
+function ratingRangeWithParameter(min : number, max:number){
+  return (c:AbstractControl):{[key:string]:boolean | null} => {
+
+    if (c.value !== null && (isNaN(c.value) || c.value<min || c.value>max  )) {
+  
+      return {'range':true}
+      
+    }
+  
+    return null;
+  
+  }
+
+}
+```
+
+## How to Add Nested from Group and Used it in the template
+```
+ this.customerForm = this.fb.group({
+      firstName:['',[Validators.required, Validators.minLength(3)]],
+      lastName :['',[Validators.required, Validators.maxLength(50)]],
+     
+
+      emailGroup : this.fb.group({
+        email:['',[Validators.required, Validators.email]],
+        confirmEmail:['', Validators.required],
+      }),
+
+   
+      phone:'',
+      notification:'email',
+      sendCatalog : true,
+      rating :[null, ratingRangeWithParameter(1,10)]
+    })
+```
+
+```<div formGroupName="emailGroup" >....</div>```
+
+
+## Cross field validation
+  add fields in the field group and add validation in the group
+```
+
+      emailGroup : this.fb.group({
+        email:['',[Validators.required, Validators.email]],
+        confirmEmail:['', Validators.required],
+      }, {validator: emailMatcher}),
+
+```
+
+## Watch Value Changes
+```
+    this.customerForm.get('notification').valueChanges.subscribe(
+      (value) => {console.log(value)}
+    )
+```
+
+## Display Validation Message in Better way
+
+```
+  emailMessage : string;
+
+  private validationMessages = {
+      required :'Please enter your email address',
+      email:'please enter your email address'
+  };
+
+  setMessage(c:AbstractControl) : void{
+    this.emailMessage ='';
+
+    if ((c.touched || c.dirty) && c.errors) {
+        this.emailMessage = Object.keys(c.errors).map(
+          key => this.validationMessages[key]).join( ' ');
+    }
+  }
+```
